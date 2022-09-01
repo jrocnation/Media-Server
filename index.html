@@ -1,0 +1,112 @@
+<!-- 
+ originated: 11-12-2021 / James G. template by Coach
+ =============================================================================================
+ Note: This web page and its associated media contents are for educational purpose only
+		media contents may be copyrighted by various artists
+ =============================================================================================
+
+ Objective:
+ ==========
+ * Demonstrate serving music using HTML5 & Javascript
+ =============================================================================================
+ ============================================================================================= -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Media Server</title>
+	<link rel="stylesheet" href="styles.css" type="text/css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+
+	<div id="content">
+
+		<TABLE>
+
+			<FORM name="theForm">
+
+				<p style="text-align: center">
+					<input type="text"
+						style="color:white;background-color:black; text-align: center;font-size:32px; font-weight:bold; font-family:Times New Roman;"
+						name="txtDate" size="20">
+					<input type="text"
+						style="color:white;background-color:black;  text-align: center;font-size:32px; font-weight:bold; font-family:Times New Roman;"
+						name="txtTime" size="20">
+
+				</p>
+
+				<p style="text-align: center">
+					<img src="images/*underwater.jpeg" width="55%" NAME="image_Main" onClick="stopMusic();">
+				</p>
+
+				<p style="text-align:center">
+					<input type="text" style="color:white; background-color:black; text-align: center;
+			font-size:28px; font-weight:bold;  font-family:Times New Roman;" name="txt_tuneID" size="42">
+
+					<input type="text" style="color:gold;background-color:black;  text-align: center; 
+			font-size:28px; font-weight:bold; font-family:Times New Roman;" name="txtElapse" size="6">
+				</p>
+				<!-- IMAGE - thumbnail section -->
+
+				<p style="text-align: center">
+
+					<img src="images/*rave.jpg" width="15%" height="14%" NAME="rave"
+						onclick="playRave();">
+
+
+					<img src="images/*gibson.jpeg" width="15%" height="120px" NAME="gibson" 
+						onclick="playGibson();">
+
+
+
+					<img src="images/*peace.jpeg" width="15%" height="14%" NAME="peace" onClick="playPeace();">
+
+
+					<img src="images/*infinite.jpg" width="15%" height="14%" NAME="infinite"
+						onclick="playInfinite();">
+
+				</p>
+
+			</FORM>
+
+		</TABLE>
+	
+	</div>
+
+	<!-- Sound FX -->
+
+	<audio id="select-click">
+		<source src="sounds/*select-click-1109.wav">
+	</audio>
+
+	<audio id="tech-hum">
+		<source src="sounds/*technological-futuristic-hum-2133.wav">
+	</audio>
+
+	<!-- ============================================================================================== -->
+	<!-- SONGS / MUSIC -->
+
+	<audio id="peace" preload="none">
+		<source src="music/*art_of_flight__unofficial_trailer__m83_outro.mp3">
+	</audio>
+
+	<audio id="gibson" preload="none">
+		<source src="music/*Albert_King___Born_Under_A_Bad_Sign.mp3">
+	</audio>
+
+	<audio id="rave" preload="none">
+		<source src="music/*BYOB_vs_J_Majik__Wickaman___Save_My_Life__Dubstep_Mix.mp3">
+	</audio>
+
+	<audio id="infinite" preload="none">
+		<source src="mp4/theShow.m4v">
+	</audio>
+
+	<!-- ================================================================  -->
+
+</BODY>
+
+</HTML>

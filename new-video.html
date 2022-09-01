@@ -1,0 +1,131 @@
+<!-- newVideo.html                                                                          
+	=============================================================================================
+ Coach / www.technology-systems.com                                                            
+ Update records:                                                                               
+ ===============
+ 2-21-2021: adapted for ECE103 class project
+ ============================================================================================= 
+ Functional Requirements:                                                                      
+ ========================                                                                      
+ Play selected video file                
+ ============================================================================================= -->
+<html>
+<head>
+	<title>The In Between</title>
+	<style type="text/css">
+		body{
+			color:white;
+			background: black ;
+			background-color:black;
+		}
+	</style>
+</head>
+<body> 
+<div style="text-align:center">  
+	 <FORM name="theForm">   <!-- required -->
+<!-- =========================================================================================  -->	
+	<p style="text-align:center">
+		<input type="text" style="color:white; background-color:black; text-align: center;
+			font-size:32px; font-weight:bold; font-family:Times New Roman;" name="txtDate" size="20" > 
+		<input type="text" style= "color:white;background-color:navy;  text-align: center;
+			font-size:32px; font-weight:bold; font-family:Times New Roman;"name="txtTime" size="20" >
+	</p>
+
+<!-- =========================================================================================  -->	
+<!-- Place your video file name here:  -->
+   <video id="video" width="75%" controls autoplay muted>
+		 <source src="mp4/theShow.m4v"   type="video/mp4"> 	 		 														  				 							  		  				
+   </video>		 
+<!-- =========================================================================================  -->	
+ 	</FORM> 
+ </div>	
+<!-- ================================================================  -->
+<!-- Javascript starts here: -->
+<script>
+var timerID;
+var myVideo;
+	var hours = 0;   // declare at main
+	var minutes = 0;	
+	var seconds = 0;
+//=========================================================
+function StartUp()
+{
+	clearInterval(timerID);		// ***** to prevent repeat firing upon re-entry
+	timerID = setInterval("OneSecondUpdate()",1000);	
+	playVideo();   
+} // end function StartUp()
+//=========================================================
+function OneSecondUpdate()
+{
+	//****************************************************
+	// Detect end of play:  (operation verified 1-11-2016)
+		myVideo.onended = function(e) 
+		{
+			window.close();
+		};
+	//****************************************************
+
+	var now = new Date();
+	var displayStr;
+
+var weekday = new Array(7);
+
+weekday[0] = "Sunday";
+weekday[1] = "Monday";
+weekday[2] = "Tuesday";
+weekday[3] = "Wednesday";
+weekday[4] = "Thursday";
+weekday[5] = "Friday";
+weekday[6] = "Saturday";
+
+var dow = weekday[now.getDay()];
+
+var month = now.getMonth() + 1
+var day = now.getDate()
+var year = now.getFullYear()
+
+	hours = now.getHours();			//declared at main
+
+	var hours_ampm;
+	hours_ampm = hours;
+	if (hours>12) {hours_ampm = hours - 12;}
+	if (hours==0) {hours_ampm = 12;}
+
+	minutes = now.getMinutes();		//declared at main
+	
+	seconds = now.getSeconds();		//declared at main
+
+var StrMin = String(minutes);
+if (minutes < 10){StrMin = "0" + StrMin;}
+
+var StrSec = String(seconds);
+if (seconds < 10){StrSec = "0" + StrSec;}
+
+var StrHour = String(hours_ampm);
+
+if (hours <= 11) {var StrAmPm = "AM";}
+if (hours > 11) {var StrAmPm = "PM";}
+if (hours == 0) {var StrAmPm = "AM";}
+
+var displayStr_date =dow + ", "+String(month) + "/" + String(day) + "/" + String(year);	
+
+var displayStr_time =  StrHour + ":" + StrMin + ":" + StrSec + " " + StrAmPm ;
+
+	// Display Date & Time:
+	window.document.theForm.txtDate.value = displayStr_date;
+	window.document.theForm.txtTime.value = displayStr_time;
+	
+} //end of function OneSecondUpdate() 
+//==============================================================
+function playVideo()
+{
+ myVideo = document.getElementById("video");
+ myVideo.currentTime = 0; // Seek to 0 seconds 
+        myVideo.play(); 
+}
+//==============================================================
+	StartUp();
+// ==========================================================
+		</script>
+	</BODY>
+</HTML>
